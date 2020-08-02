@@ -22,11 +22,21 @@ class ProductList extends React.Component {
     return (
       <div>
         {/* <div>{JSON.stringify(results.webPages.value)}</div> */}
-        <ul>
+        <div>
           {results.map(product => (
-            <li key={product["name"]}>{product["name"]}</li>
+            <div key={product["id"]}>
+              <div>
+                <a href={product["url"]}>{product["name"].substring(0, 50)}</a>
+              </div>
+              <div>
+                <a href={product["url"]}>
+                  {product["displayUrl"].substring(0, 50)}
+                </a>
+              </div>
+              <div>{product["snippet"].substring(0, 100)}</div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
