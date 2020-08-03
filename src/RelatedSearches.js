@@ -21,11 +21,11 @@ class RelatedSearchesList extends React.Component {
 
     return (
       <div>
-        {/* <div>{JSON.stringify(results.webPages.value)}</div> */}
+        {/* <div>{JSON.stringify(results)}</div> */}
         <div>
           {results.map(word => (
-            <div key={word["id"]}>
-              <span>{word["name"].substring(0, 20)}</span>
+            <div key={word["query"]}>
+              <span>{word["query"].substring(0, 20)}</span>
             </div>
           ))}
         </div>

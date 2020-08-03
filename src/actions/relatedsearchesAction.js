@@ -31,11 +31,18 @@ export const clickRelatedSearch = query_value => ({
 export function fetchRelated(query = "Hedwig") {
   return dispatch => {
     dispatch(fetchRelatedBegin());
-    let webSearchApiClient = new WebSearchAPIClient(credentials);
-    webSearchApiClient.web
-      .search(query)
+    let url =
+      "https://www.bingapis.com/api/v7/suggestions?q=" +
+      query +
+      "&AppID=E1FB6085899219CFB7F44E35A3FE49A00C4D6480";
+    return fetch(url)
+      .then(res => res.json())
       .then(result => {
-        dispatch(fetchRelatedSuccess(result["webPages"].value));
+        dispatch(
+          fetchRelatedSuccess(
+            result["suggestionGroups"][0]["searchSuggestions"]
+          )
+        );
       })
       .catch(err => dispatch(fetchRelatedFailure(err)));
   };
