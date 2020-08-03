@@ -6,22 +6,22 @@ import { fetchRelated } from "./actions/relatedsearchesAction";
 import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
 
 class SearchBoxWrapper extends React.Component {
-  handleSearch = value => {
-    this.props.searchUpdate(value);
-    this.props.fetchProducts(value);
-    this.props.fetchRelated(value);
-  };
+    handleSearch = value => {
+        this.props.searchUpdate(value);
+        this.props.fetchProducts(value);
+        this.props.fetchRelated(value);
+    };
 
-  render() {
-    const { query_value } = this.props;
-    return (
-      <div className="searchbox_wrapper">
-        <h2>Search</h2>
-        <SearchBox
-          placeholder={query_value}
-          onSearch={newValue => this.handleSearch(newValue)}
-        />
-        {/* <form
+    render() {
+        return (
+            <div className="searchbox_wrapper">
+                <h2>Search</h2>
+                <SearchBox
+                    placeholder="hachthon"
+                    value={this.props.query_value}
+                    onSearch={newValue => this.handleSearch(newValue)}
+                />
+                {/* <form
           onSubmit={e => {
             e.preventDefault();
             if (!input.value.trim()) {
@@ -33,22 +33,22 @@ class SearchBoxWrapper extends React.Component {
           <input ref={node => (input = node)} defaultValue={query_value} />
           <button type="submit">Search</button>
         </form> */}
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  query_value: state.searchbox.query_value
+    query_value: state.searchbox.query_value
 });
 
 const mapDIspatchToProps = {
-  searchUpdate,
-  fetchProducts,
-  fetchRelated
+    searchUpdate,
+    fetchProducts,
+    fetchRelated
 };
 
 export default connect(
-  mapStateToProps,
-  mapDIspatchToProps
+    mapStateToProps,
+    mapDIspatchToProps
 )(SearchBoxWrapper);
