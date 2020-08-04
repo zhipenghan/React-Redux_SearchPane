@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export default function productReducer(state = initialState, action) {
-    console.log("searchbox Reducer", state, action);
     switch (action.type) {
         case SEARCH_CLICK:
             return {

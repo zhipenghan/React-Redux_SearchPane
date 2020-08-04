@@ -18,12 +18,12 @@ initializeIcons(/* optional base url */);
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => (
-  <Provider store={store}>
-    {/* <Counter /> */}
-    <SearchBoxWrapper />
-    <RelatedSearchesList />
-    <ProductList />
-  </Provider>
+    <Provider store={store}>
+        {/* <Counter /> */}
+        <SearchBoxWrapper />
+        <ProductList />
+        <RelatedSearchesList />
+    </Provider>
 );
 
 render(<App />, document.getElementById("root"));

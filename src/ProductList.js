@@ -71,59 +71,65 @@ class ProductList extends React.Component {
                 <div>
                     <h3>Web</h3>
                     <Stack styles={stackStyles}>
-                        {results.map((product, index) => (
-                            <div key={"card-" + index}>
-                                <Card
-                                    aria-label="Clickable horizontal card "
-                                    horizontal
-                                    onClick={e => this.alertClicked()}
-                                    tokens={cardTokens}
-                                >
-                                    <Card.Section>
-                                        <Text styles={siteTextStyles}>
-                                            <a href={product["url"]}>
-                                                {product["name"].substring(
-                                                    0,
-                                                    50
-                                                )}
-                                            </a>
-                                        </Text>
-                                        <Text
-                                            variant="small"
-                                            styles={siteTextStyles}
+                        {results.map((product, index) => {
+                            if (index < 5) {
+                                return (
+                                    <div key={"card-" + index}>
+                                        <Card
+                                            aria-label="Clickable horizontal card "
+                                            horizontal
+                                            onClick={e => this.alertClicked()}
+                                            tokens={cardTokens}
                                         >
-                                            <a href={product["url"]}>
-                                                {product[
-                                                    "displayUrl"
-                                                ].substring(0, 50)}
-                                            </a>
-                                        </Text>
-                                        <Text styles={descriptionTextStyles}>
-                                            {product["snippet"].substring(
-                                                0,
-                                                100
-                                            )}
-                                        </Text>
-                                    </Card.Section>
-                                    <Card.Section
-                                        styles={footerCardSectionStyles}
-                                        tokens={footerCardSectionTokens}
-                                    >
-                                        <Icon
-                                            iconName="SingleBookmark"
-                                            styles={iconStyles}
-                                        />
-                                        <Stack.Item grow={1}>
-                                            <span />
-                                        </Stack.Item>
-                                        <Icon
-                                            iconName="More"
-                                            styles={iconStyles}
-                                        />
-                                    </Card.Section>
-                                </Card>
-                            </div>
-                        ))}
+                                            <Card.Section>
+                                                <Text styles={siteTextStyles}>
+                                                    <a href={product["url"]}>
+                                                        {product[
+                                                            "name"
+                                                        ].substring(0, 50)}
+                                                    </a>
+                                                </Text>
+                                                <Text
+                                                    variant="small"
+                                                    styles={siteTextStyles}
+                                                >
+                                                    <a href={product["url"]}>
+                                                        {product[
+                                                            "displayUrl"
+                                                        ].substring(0, 50)}
+                                                    </a>
+                                                </Text>
+                                                <Text
+                                                    styles={
+                                                        descriptionTextStyles
+                                                    }
+                                                >
+                                                    {product[
+                                                        "snippet"
+                                                    ].substring(0, 100)}
+                                                </Text>
+                                            </Card.Section>
+                                            <Card.Section
+                                                styles={footerCardSectionStyles}
+                                                tokens={footerCardSectionTokens}
+                                            >
+                                                <Icon
+                                                    iconName="SingleBookmark"
+                                                    styles={iconStyles}
+                                                />
+                                                <Stack.Item grow={1}>
+                                                    <span />
+                                                </Stack.Item>
+                                                <Icon
+                                                    iconName="More"
+                                                    styles={iconStyles}
+                                                />
+                                            </Card.Section>
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                        })}
                     </Stack>
                 </div>
             </div>

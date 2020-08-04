@@ -11,7 +11,6 @@ const initialState = {
 };
 
 export default function relatedsearchesReducer(state = initialState, action) {
-    console.log("relatedsearches Reducer", state, action);
     switch (action.type) {
         case FETCH_RELATED_BEGIN:
             return {
